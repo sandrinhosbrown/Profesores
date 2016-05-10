@@ -13,7 +13,9 @@ public class Profes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Menu m = new Menu();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
     }
     
 }
