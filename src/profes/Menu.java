@@ -7,7 +7,7 @@ package profes;
 
 /**
  *
- * @author usu21
+ * @author Sandro Gamarra
  */
 public class Menu extends javax.swing.JFrame {
 

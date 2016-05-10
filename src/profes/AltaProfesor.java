@@ -7,7 +7,7 @@ package profes;
 
 /**
  *
- * @author usu21
+ * @author Sandro Gamarra
  */
 public class AltaProfesor extends javax.swing.JDialog {
 
