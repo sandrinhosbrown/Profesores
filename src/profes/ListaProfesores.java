@@ -24,6 +24,9 @@ public class ListaProfesores implements Serializable{
         lista.add(p);
     }
     
+    public boolean existe (Profesor p){
+        return lista.contains(p); 
+    }
     
     public ArrayList<Profesor> getLista() {
         return lista;

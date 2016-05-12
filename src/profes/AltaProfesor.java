@@ -5,6 +5,8 @@
  */
 package profes;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sandro Gamarra
@@ -14,8 +16,19 @@ public class AltaProfesor extends javax.swing.JDialog {
     /**
      * Creates new form AltaProfesor
      */
+    private Profesor p;
+
+    public Profesor getP() {
+        return p;
+    }
+
+    public void setP(Profesor p) {
+        this.p = p;
+    }
+
     public AltaProfesor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        p = new Profesor();
         initComponents();
     }
 
@@ -27,6 +40,7 @@ public class AltaProfesor extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
@@ -59,11 +73,41 @@ public class AltaProfesor extends javax.swing.JDialog {
 
         jLabel5.setText("Edad:");
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.nif}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.apellidos}"), jTextField2, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.nombre}"), jTextField3, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- ESCOGE UNA MATERIA ---", "Administración", "Ciencias", "Educación física", "Idiomas", "Informática", "Finanzas", "Marketing" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.especialidad}"), jComboBox1, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(18, 18, 70, 1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.edad}"), jSpinner1, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jCheckBox1.setText("Master Profesorado");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${p.master}"), jCheckBox1, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
 
         jLabel6.setText("Relación laboral:");
 
@@ -74,6 +118,11 @@ public class AltaProfesor extends javax.swing.JDialog {
         jRadioButton2.setText("Asalariado");
 
         jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,12 +208,49 @@ public class AltaProfesor extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose(); //es lo mismo que this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Primero controlaremos que los datos sean correctos (nif ni apellidos pueden dejar vacío)
+        if (p.getnif().isEmpty() || p.getNombre().isEmpty() || p.getApellidos().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hay campos en blanco", "Campos vacios", JOptionPane.ERROR_MESSAGE);
+        } else if (p.getEspecialidad().isEmpty() || jComboBox1.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debes escoger una especilidad",
+                    "Especialidad vacía", JOptionPane.ERROR_MESSAGE);
+        } else if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Debes escoger una relación laboral",
+                    "Relación laboral vacía", JOptionPane.ERROR_MESSAGE);
+        } else if (Profes.misProfesores.existe(p)){ //normalmente, este iria primero por si hubiera error
+         JOptionPane.showMessageDialog(this, "Ya existe un profesor con ese NIF", "NIF Duplicado", JOptionPane.ERROR_MESSAGE);
+        } else {
+            //Falta darle valor 
+//            if(jRadioButton1.isSelected()){
+//                p.setAutonomo(true); 
+//            } else {
+//                p.setAutonomo(false);
+//            }
+            p.setAutonomo(jRadioButton1.isSelected()); //es lo mismo que lo comentado
+            Profes.misProfesores.altaProfesor(p);
+            Profes.miFichero.grabar(Profes.misProfesores);
+            JOptionPane.showMessageDialog(this, "Profesor dado de alta!!!");
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,5 +312,6 @@ public class AltaProfesor extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
