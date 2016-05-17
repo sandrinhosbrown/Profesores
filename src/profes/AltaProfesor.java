@@ -227,7 +227,7 @@ public class AltaProfesor extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Primero controlaremos que los datos sean correctos (nif ni apellidos pueden dejar vacío)
-        if (p.getnif().isEmpty() || p.getNombre().isEmpty() || p.getApellidos().isEmpty()) {
+        if (p.getNif().isEmpty() || p.getNombre().isEmpty() || p.getApellidos().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Hay campos en blanco", "Campos vacios", JOptionPane.ERROR_MESSAGE);
         } else if (p.getEspecialidad().isEmpty() || jComboBox1.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Debes escoger una especilidad",

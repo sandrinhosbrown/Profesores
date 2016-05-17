@@ -30,6 +30,12 @@ public class Profesor implements Serializable{
         edad=18;
     }
 
+    @Override
+    public String toString() {
+        return nif + " " + nombre + " " + apellidos;
+    }
+    
+    
     public Profesor(String nif, String nombre, String apellidos, String especialidad, boolean master, boolean autonomo, int edad) {
         this.nif = nif;
         this.nombre = nombre;
@@ -56,7 +62,7 @@ public class Profesor implements Serializable{
             return false;
         }
         final Profesor other = (Profesor) obj;
-        return nif.equalsIgnoreCase(other.getnif());
+        return nif.equalsIgnoreCase(other.getNif());
         
     }
     
@@ -116,11 +122,11 @@ public class Profesor implements Serializable{
         this.nombre = nombre;
     }
 
-    public String getnif() {
+    public String getNif() {
         return nif;
     }
 
-    public void setnif(String NIF) {
+    public void setNif(String nif) {
         this.nif = nif;
     }
 
