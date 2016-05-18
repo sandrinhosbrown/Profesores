@@ -24,6 +24,10 @@ public class ListaProfesores implements Serializable{
         lista.add(p);
     }
     
+    public void bajaProfesor(Profesor p){
+        lista.remove(p);
+    }
+    
     public boolean existe (Profesor p){
         return lista.contains(p); 
     }

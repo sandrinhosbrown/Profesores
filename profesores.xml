@@ -5,28 +5,6 @@
    <void method="add">
     <object class="profes.Profesor">
      <void property="apellidos">
-      <string>rtyhurt</string>
-     </void>
-     <void property="edad">
-      <int>19</int>
-     </void>
-     <void property="especialidad">
-      <string>Administración</string>
-     </void>
-     <void property="master">
-      <boolean>true</boolean>
-     </void>
-     <void property="nif">
-      <string>asdf</string>
-     </void>
-     <void property="nombre">
-      <string>sfwqr</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="profes.Profesor">
-     <void property="apellidos">
       <string>brown</string>
      </void>
      <void property="autonomo">
