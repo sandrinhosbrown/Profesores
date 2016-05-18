@@ -194,6 +194,9 @@
       <BindingProperties>
         <BindingProperty name="selectedItem" source="Form" sourcePath="${p.especialidad}" target="jComboBox1" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
       </BindingProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinner1">
       <Properties>
